@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
+import express from "express";
 
-
+const app = express();
+app.use(express.json());
 
 const userSchema = new mongoose.Schema({
     name:{type:String,required:true},
@@ -13,6 +15,6 @@ const userSchema = new mongoose.Schema({
     resetOtpExpiredAT:{type:Number,default:0},
 })
 
-const userModel = mongoose.models.user || mongoose.model('user',userSchema);
+const userModel = mongoose.models.user || mongoose.model('user',userSchema ,'user');
 
 export default userModel;

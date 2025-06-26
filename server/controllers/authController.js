@@ -1,12 +1,12 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import userModel from '../models/userModel.js';
+import transporter from '../config/nodemailer.js';
 
 // new account 
 export const register = async  (req,res)=> {
-    const {name,email, password} = req.body;
+    
+    const {name ,email, password} = req.body;
     if(!name || !email || !password){
         return res.json({
             success:false,
@@ -16,24 +16,30 @@ export const register = async  (req,res)=> {
 
 
     try {
+        console.log('Incoming data:', req.body);
         const existingUser = await userModel.findOne({email})
+        console.log('Existing user check:', existingUser);
+
         if(existingUser){
             return res.json({
                 success:false,
                 message: 'user already exists'
             })
         }
-        const hasedPassword = await bcrypt.hash(password,10);
+        const hashedPassword = await bcrypt.hash(password,10);
+        console.log('Hashed password:', hashedPassword);
 
 
         const user = new userModel({
             name,
             email,
-            password:hasedPassword
+            password: hashedPassword
+
         });
 
       
         await user.save();
+        console.log('User saved:', user);
 
 
 
@@ -45,21 +51,26 @@ export const register = async  (req,res)=> {
         res.cookie('token',token,{
             httpOnly:true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
             maxAge: 7 * 24 * 60 * 1000
         })
+       // sending mail
+        const mailOptions = {
+            from: process.env.SENDER_EMAIL,
+            to: email,
+            subject: 'Welcome to my Purple world ,Your Registration Successful',
+            text: `Hello ${name},welcome to my Purple world! Your registration was successful. your account has been created with the email: ${email}.`,
+        }
+        await transporter.sendMail(mailOptions);
         return res.json({success:true})
 
     } catch (error) {
-        res.json({success:false,message:error.message})
-        console.log("eorror in register area")
+        console.error("Error in register area:", error);
+        return res.status(500).json({success:false, message: 'Internal server error'});
     }
 }
-console.log('Current directory:', import.meta.url);
 
-export const test = (req, res) => {
-  res.send('Auth controller working');
-};
+
 
 // sigin in 
 export const login = async (req,res)=>{
@@ -135,3 +146,8 @@ export const logout = async (req,res)=>{
         message:error.message
     })
    }}
+
+
+   export const sendVerifyOtp = async (req,res)=>{
+
+   }
