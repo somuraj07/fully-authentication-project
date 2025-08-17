@@ -46,26 +46,26 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-white via-sky-100 to-white flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
           <h1 
             onClick={() => navigate('/')} 
-            className="text-3xl font-bold text-gray-800 cursor-pointer hover:text-blue-600 transition-colors duration-200"
+            className="text-3xl font-bold text-sky-600 cursor-pointer hover:text-sky-800 transition-colors duration-200"
           >
             Purple
           </h1>
         </div>
 
         {/* Main Card */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+        <div className="bg-white rounded-2xl shadow-xl p-8 border border-sky-200">
           {/* Header */}
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">
+            <h2 className="text-2xl font-bold text-sky-600 mb-2">
               {state === 'sign up' ? 'Create Account' : 'Welcome Back'}
             </h2>
-            <p className="text-gray-600">
+            <p className="text-sky-500">
               {state === 'sign up' ? 'Create your account to get started' : 'Login to your account'}
             </p>
           </div>
@@ -74,7 +74,7 @@ const Login = () => {
           <form onSubmit={onSubmitHandler} className="space-y-6">
             {state === 'sign up' && (
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-sky-700 mb-2">
                   Full Name
                 </label>
                 <input
@@ -83,13 +83,13 @@ const Login = () => {
                   type="text"
                   placeholder="Enter your full name"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="w-full px-4 py-3 border border-sky-300 rounded-lg focus:ring-2 focus:ring-sky-400 focus:border-transparent transition-all duration-200 bg-white focus:bg-sky-50"
                 />
               </div>
             )}
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-sky-700 mb-2">
                 Email Address
               </label>
               <input
@@ -98,12 +98,12 @@ const Login = () => {
                 type="email"
                 placeholder="Enter your email"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                className="w-full px-4 py-3 border border-sky-300 rounded-lg focus:ring-2 focus:ring-sky-400 focus:border-transparent transition-all duration-200 bg-white focus:bg-sky-50"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-sky-700 mb-2">
                 Password
               </label>
               <input
@@ -112,7 +112,7 @@ const Login = () => {
                 type="password"
                 placeholder="Enter your password"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                className="w-full px-4 py-3 border border-sky-300 rounded-lg focus:ring-2 focus:ring-sky-400 focus:border-transparent transition-all duration-200 bg-white focus:bg-sky-50"
               />
             </div>
 
@@ -120,7 +120,7 @@ const Login = () => {
               <div className="text-right">
                 <p 
                   onClick={() => navigate('/reset-password')} 
-                  className="text-sm text-blue-600 hover:text-blue-800 cursor-pointer font-medium"
+                  className="text-sm text-sky-600 hover:text-sky-800 cursor-pointer font-medium"
                 >
                   Forgot password?
                 </p>
@@ -129,7 +129,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 focus:ring-4 focus:ring-blue-200 transition-all duration-200 transform hover:scale-[1.02]"
+              className="w-full bg-gradient-to-r from-sky-500 to-sky-700 text-white py-3 px-4 rounded-lg font-medium hover:from-sky-600 hover:to-sky-800 focus:ring-4 focus:ring-sky-200 transition-all duration-200 transform hover:scale-[1.02]"
             >
               {state === 'sign up' ? 'Create Account' : 'Sign In'}
             </button>
@@ -138,21 +138,21 @@ const Login = () => {
           {/* Toggle State */}
           <div className="mt-8 text-center">
             {state === 'sign up' ? (
-              <p className="text-gray-600">
+              <p className="text-sky-500">
                 Already have an account?{' '}
                 <span 
                   onClick={() => setState('Login')} 
-                  className="text-blue-600 hover:text-blue-800 cursor-pointer font-medium"
+                  className="text-sky-600 hover:text-sky-800 cursor-pointer font-medium"
                 >
                   Login here
                 </span>
               </p>
             ) : (
-              <p className="text-gray-600">
+              <p className="text-sky-500">
                 Don't have an account?{' '}
                 <span 
                   onClick={() => setState('sign up')} 
-                  className="text-blue-600 hover:text-blue-800 cursor-pointer font-medium"
+                  className="text-sky-600 hover:text-sky-800 cursor-pointer font-medium"
                 >
                   Sign up
                 </span>
@@ -163,7 +163,7 @@ const Login = () => {
 
         {/* Footer */}
         <div className="text-center mt-8">
-          <p className="text-gray-500 text-sm">
+          <p className="text-sky-400 text-sm">
             By continuing, you agree to our Terms of Service and Privacy Policy
           </p>
         </div>

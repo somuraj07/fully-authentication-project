@@ -71,152 +71,152 @@ const ResetPassword = () => {
     }
   };
 
- return (
-  <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
-    <div className="w-full max-w-md">
-      {!isEmailSent && 
-      <div className="bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 p-8">
-        <form onSubmit={onSubmitEmail} className="space-y-6">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m0 0a2 2 0 012 2m-2-2a2 2 0 00-2 2m2-2V5a2 2 0 00-2-2m0 0H9a2 2 0 00-2 2v0m4 0V3a2 2 0 014 0v2m-4 0a2 2 0 014 0" />
-              </svg>
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-white via-sky-100 to-white flex items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        {!isEmailSent && 
+        <div className="bg-white rounded-2xl shadow-xl border border-sky-200 p-8">
+          <form onSubmit={onSubmitEmail} className="space-y-6">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-r from-sky-400 to-sky-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m0 0a2 2 0 012 2m-2-2a2 2 0 00-2 2m2-2V5a2 2 0 00-2-2m0 0H9a2 2 0 00-2 2v0m4 0V3a2 2 0 014 0v2m-4 0a2 2 0 014 0" />
+                </svg>
+              </div>
+              <h1 className="text-3xl font-bold text-sky-600 mb-2">Reset Password</h1>
+              <p className="text-sky-500 text-sm">Enter your registered email address</p>
             </div>
-            <h1 className="text-3xl font-bold text-white mb-2">Reset Password</h1>
-            <p className="text-gray-300 text-sm">Enter your registered email address</p>
-          </div>
-          
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
-              <input 
-                type='email' 
-                value={email} 
-                onChange={e => setEmail(e.target.value)} 
-                required
-                placeholder="Enter your email"
-                className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
-              />
-            </div>
-          </div>
-          
-          <button 
-            type="submit"
-            className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-          >
-            Send Reset Code
-          </button>
-          
-          <div className="text-center">
-            <button 
-              type="button"
-              onClick={() => navigate('/login')}
-              className="text-purple-300 hover:text-white text-sm transition-colors duration-300"
-            >
-              Back to Login
-            </button>
-          </div>
-        </form>
-      </div>}
-
-      {!isOtpSubmitted && isEmailSent && 
-      <div className="bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 p-8">
-        <form onSubmit={onSubmitOtp} className="space-y-6">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <h1 className="text-3xl font-bold text-white mb-2">Verify Email</h1>
-            <p className="text-gray-300 text-sm">Enter the 6-digit verification code sent to your email</p>
-          </div>
-
-          <div className="flex justify-center">
-            <div onPaste={handlePaste} className="flex gap-3">
-              {Array(6).fill(0).map((_, index) => (
+            
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-sky-700 mb-2">Email Address</label>
                 <input 
-                  type='text' 
-                  maxLength={1}
-                  key={index} 
+                  type='email' 
+                  value={email} 
+                  onChange={e => setEmail(e.target.value)} 
                   required
-                  ref={el => inputRefs.current[index] = el}
-                  onInput={(e) => handleInput(e, index)}
-                  onKeyDown={(e) => handleKeyDown(e, index)}
-                  className="w-12 h-12 bg-white/10 border border-white/30 rounded-lg text-center text-white text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-3 bg-white border border-sky-300 rounded-lg text-sky-900 placeholder-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300"
                 />
-              ))}
+              </div>
             </div>
-          </div>
-
-          <button 
-            type="submit"
-            className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-          >
-            Verify Code
-          </button>
-
-          <div className="text-center">
+            
             <button 
-              type="button"
-              onClick={() => setIsEmailSent(false)}
-              className="text-purple-300 hover:text-white text-sm transition-colors duration-300"
+              type="submit"
+              className="w-full bg-gradient-to-r from-sky-500 to-sky-700 hover:from-sky-600 hover:to-sky-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
-              Change Email Address
+              Send Reset Code
             </button>
-          </div>
-        </form>
-      </div>}
+            
+            <div className="text-center">
+              <button 
+                type="button"
+                onClick={() => navigate('/login')}
+                className="text-sky-600 hover:text-sky-800 text-sm transition-colors duration-300"
+              >
+                Back to Login
+              </button>
+            </div>
+          </form>
+        </div>}
 
-      {isOtpSubmitted && isEmailSent &&
-      <div className="bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 p-8">
-        <form onSubmit={onSubmitNewPassword} className="space-y-6">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
+        {!isOtpSubmitted && isEmailSent && 
+        <div className="bg-white rounded-2xl shadow-xl border border-sky-200 p-8">
+          <form onSubmit={onSubmitOtp} className="space-y-6">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-r from-sky-400 to-sky-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h1 className="text-3xl font-bold text-sky-600 mb-2">Verify Email</h1>
+              <p className="text-sky-500 text-sm">Enter the 6-digit verification code sent to your email</p>
             </div>
-            <h1 className="text-3xl font-bold text-white mb-2">New Password</h1>
-            <p className="text-gray-300 text-sm">Enter your new secure password</p>
-          </div>
-          
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">New Password</label>
-              <input 
-                type='password' 
-                value={newPassword} 
-                onChange={e => setNewPassword(e.target.value)} 
-                required
-                placeholder="Enter your new password"
-                className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
-              />
+
+            <div className="flex justify-center">
+              <div onPaste={handlePaste} className="flex gap-3">
+                {Array(6).fill(0).map((_, index) => (
+                  <input 
+                    type='text' 
+                    maxLength={1}
+                    key={index} 
+                    required
+                    ref={el => inputRefs.current[index] = el}
+                    onInput={(e) => handleInput(e, index)}
+                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    className="w-12 h-12 bg-white border border-sky-300 rounded-lg text-center text-sky-900 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300"
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-          
-          <button 
-            type="submit"
-            className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-          >
-            Reset Password
-          </button>
-          
-          <div className="text-center">
+
             <button 
-              type="button"
-              onClick={() => navigate('/login')}
-              className="text-purple-300 hover:text-white text-sm transition-colors duration-300"
+              type="submit"
+              className="w-full bg-gradient-to-r from-sky-500 to-sky-700 hover:from-sky-600 hover:to-sky-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
-              Back to Login
+              Verify Code
             </button>
-          </div>
-        </form>
-      </div>}
+
+            <div className="text-center">
+              <button 
+                type="button"
+                onClick={() => setIsEmailSent(false)}
+                className="text-sky-600 hover:text-sky-800 text-sm transition-colors duration-300"
+              >
+                Change Email Address
+              </button>
+            </div>
+          </form>
+        </div>}
+
+        {isOtpSubmitted && isEmailSent &&
+        <div className="bg-white rounded-2xl shadow-xl border border-sky-200 p-8">
+          <form onSubmit={onSubmitNewPassword} className="space-y-6">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-r from-sky-400 to-sky-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
+              <h1 className="text-3xl font-bold text-sky-600 mb-2">New Password</h1>
+              <p className="text-sky-500 text-sm">Enter your new secure password</p>
+            </div>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-sky-700 mb-2">New Password</label>
+                <input 
+                  type='password' 
+                  value={newPassword} 
+                  onChange={e => setNewPassword(e.target.value)} 
+                  required
+                  placeholder="Enter your new password"
+                  className="w-full px-4 py-3 bg-white border border-sky-300 rounded-lg text-sky-900 placeholder-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300"
+                />
+              </div>
+            </div>
+            
+            <button 
+              type="submit"
+              className="w-full bg-gradient-to-r from-sky-500 to-sky-700 hover:from-sky-600 hover:to-sky-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              Reset Password
+            </button>
+            
+            <div className="text-center">
+              <button 
+                type="button"
+                onClick={() => navigate('/login')}
+                className="text-sky-600 hover:text-sky-800 text-sm transition-colors duration-300"
+              >
+                Back to Login
+              </button>
+            </div>
+          </form>
+        </div>}
+      </div>
     </div>
-  </div>
-)
+  )
 }
 
 export default ResetPassword

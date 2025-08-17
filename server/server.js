@@ -17,7 +17,6 @@ connectDB();
 
 // ✅ Allow both local and deployed frontend
 const allowedOrigins = [
-  "http://localhost:5173",
   "https://fully-authentication-project.vercel.app"
 ];
 
