@@ -1,4 +1,3 @@
-// index.js
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
@@ -17,7 +16,8 @@ connectDB();
 
 // ✅ Allow both local and deployed frontend
 const allowedOrigins = [
-  "https://fully-authentication-project.vercel.app"
+  "https://fully-authentication-project.vercel.app",
+  "http://localhost:5173",
 ];
 
 app.use(express.json());
