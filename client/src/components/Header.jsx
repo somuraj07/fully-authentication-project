@@ -1,103 +1,146 @@
-import React, { useContext } from 'react'
-import { Mail, Phone, Github, MapPin } from 'lucide-react'
-import { AppContext } from '../context/AppContext'
-import { useNavigate } from 'react-router-dom'
+import React, { useContext } from "react";
+import { Mail, Github, Linkedin, Code, Server, Database, Shield, Briefcase, Cpu } from "lucide-react";
+import { AppContext } from "../context/AppContext";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const {userData} = useContext(AppContext)
+  const { userData } = useContext(AppContext);
   const navigate = useNavigate();
+
   return (
-    <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-16 px-4">
-      <div className="max-w-6xl mx-auto">
-        /*
-        
-        {/* Main Profile Section */}
-        <div className="flex flex-col items-center">          
-          {/* Profile Info */}
-          <div className="flex-1 text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              K SOMASANKAR
-            </h1>
-            <p className="text-xl lg:text-2xl text-gray-300 mb-6 font-light">
-              Full Stack Developer & Software Engineer
-            </p>
-            
-            {/* Contact Info */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center">
-              
-              <div className="flex items-center gap-2 text-gray-300">
-                <Mail size={16} className="text-blue-400" />
-                <span>katikasomasankar@gmail.com</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-300">
-                <Github size={16} className="text-blue-400" />
-                <span>github.com/somuraj07</span>
-              </div>
+    <div className="bg-gradient-to-r from-sky-50 via-white to-sky-100 text-gray-900 pt-20">
+      <div className="max-w-6xl mx-auto px-4 py-16">
+
+        {/* Top Section */}
+        <div className="flex flex-col items-center text-center animate-fadeIn">
+          <h1 className="text-4xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">
+            K SOMASANKAR
+          </h1>
+          <p className="text-xl lg:text-2xl text-gray-700 mb-6 font-light">
+            Secure Authentication Platform – Full Stack Developer
+          </p>
+
+          {/* Contact Info */}
+          <div className="flex flex-col sm:flex-row gap-6 mb-8 justify-center">
+            <div className="flex items-center gap-2 text-gray-700">
+              <Mail size={18} className="text-sky-600" />
+              <span>katikasomasankar@gmail.com</span>
             </div>
-            
-            {/* Education */}
-            <div className="bg-white/5 rounded-lg p-4 mb-6 backdrop-blur-sm">
-              <h3 className="text-lg font-semibold mb-2 text-blue-400">Education</h3>
-              <p className="text-gray-300">Bachelor's in Technology: Electronics and Communication Engineering</p>
-              <p className="text-sm text-gray-400">Sanskrithi School of Engineering, Puttaparthi • CGPA: 7.9/10.00 • 2022-2026</p>
+            <div className="flex items-center gap-2 text-gray-700">
+              <Github size={18} className="text-sky-600" />
+              <span>github.com/somuraj07</span>
             </div>
-            
-            {/* Quick Skills */}
-            <div className="mb-8">
-              <h3 className="text-lg font-semibold mb-3 text-blue-400">Core Technologies</h3>
-              <div className="flex flex-wrap gap-2 justify-center">
-                {['React.js', 'Next.js', 'Node.js', 'MongoDB', 'TypeScript', 'Python', 'AWS', 'Docker'].map((skill) => (
-                  <span key={skill} className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm border border-blue-500/30">
-                    {skill}
-                  </span>
-                ))}
-              </div>
+            <div className="flex items-center gap-2 text-gray-700">
+              <Linkedin size={18} className="text-sky-600" />
+              <span>linkedin.com/in/somuraj07</span>
             </div>
-            
-            {/* CTA Button */}
-            <button 
-             onClick={() => navigate('/login')}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={() => navigate("/login")}
+              className="bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
               Get Started
+            </button>
+            <button
+              onClick={() => {
+                window.scrollTo({ top: 900, behavior: "smooth" });
+              }}
+              className="bg-gradient-to-r from-blue-500 to-sky-400 hover:from-blue-600 hover:to-sky-500 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
+              Explore My Work
             </button>
           </div>
         </div>
-        
-        {/* Featured Projects Preview */}
-        <div className="mt-16 pt-8 border-t border-white/10">
-          <h3 className="text-2xl font-bold mb-6 text-center">Featured Projects</h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/5 rounded-lg p-4 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-              <h4 className="font-semibold text-blue-400 mb-2">Video Interview Platform</h4>
-              <p className="text-sm text-gray-300 mb-3">Next.js, React, Stream API - Real-time video conferencing with 99.9% uptime</p>
-              <div className="flex flex-wrap gap-1">
-                <span className="px-2 py-1 bg-green-500/20 text-green-300 rounded text-xs">Next.js</span>
-                <span className="px-2 py-1 bg-green-500/20 text-green-300 rounded text-xs">Stream API</span>
-              </div>
+
+        {/* About Me Section */}
+        <div className="mt-16 bg-white rounded-xl p-8 shadow-xl border border-sky-100">
+          <h3 className="text-2xl font-bold mb-6 text-sky-700 text-center">About Me</h3>
+          <p className="text-center text-lg mb-8 text-gray-700">
+            I’m a <span className="font-semibold">Full Stack Developer</span> passionate about
+            building secure and scalable applications. I specialize in{" "}
+            <span className="font-semibold">Authentication Systems</span>,{" "}
+            <span className="font-semibold">Cloud Deployments</span>, and{" "}
+            <span className="font-semibold">Real-Time Applications</span>.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6 text-center">
+            <div className="flex flex-col items-center">
+              <Code className="text-sky-600 mb-2" size={28} />
+              <h4 className="font-semibold text-sky-700 mb-1">Core Skills</h4>
+              <p className="text-gray-600">React.js, Next.js, Node.js, Prisma, PostgreSQL, Docker, AWS</p>
             </div>
-            
-            <div className="bg-white/5 rounded-lg p-4 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-              <h4 className="font-semibold text-blue-400 mb-2">Emergency Blood Management</h4>
-              <p className="text-sm text-gray-300 mb-3">React, Cloudflare Workers - 65% reduction in response latency</p>
-              <div className="flex flex-wrap gap-1">
-                <span className="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs">React</span>
-                <span className="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs">Cloudflare</span>
-              </div>
-            </div>
-            
-            <div className="bg-white/5 rounded-lg p-4 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-              <h4 className="font-semibold text-blue-400 mb-2">PropSpace Housing</h4>
-              <p className="text-sm text-gray-300 mb-3">Next.js 15, MongoDB - 70% reduction in housing search time</p>
-              <div className="flex flex-wrap gap-1">
-                <span className="px-2 py-1 bg-orange-500/20 text-orange-300 rounded text-xs">Next.js 15</span>
-                <span className="px-2 py-1 bg-orange-500/20 text-orange-300 rounded text-xs">MongoDB</span>
-              </div>
+            <div className="flex flex-col items-center">
+              <Shield className="text-sky-600 mb-2" size={28} />
+              <h4 className="font-semibold text-sky-700 mb-1">Focus</h4>
+              <p className="text-gray-600">Authentication, Scalable Systems, Secure APIs</p>
             </div>
           </div>
         </div>
+
+        {/* Projects & Experience */}
+        <div className="mt-20">
+          <h3 className="text-2xl font-bold mb-10 text-center text-sky-700">Projects & Experience</h3>
+          <div className="grid md:grid-cols-2 gap-8">
+            
+            {/* Projects */}
+            <div className="bg-white rounded-lg p-6 shadow-lg border border-sky-100 hover:shadow-2xl transition-all duration-300">
+              <Database className="text-sky-600 mb-3" size={26} />
+              <h4 className="font-semibold text-sky-700 mb-2">Secure User Authentication Platform</h4>
+              <p className="text-sm text-gray-600">
+                React.js, Node.js, Express.js, MongoDB – JWT login, role-based access, email verification, password reset.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 shadow-lg border border-sky-100 hover:shadow-2xl transition-all duration-300">
+              <Server className="text-sky-600 mb-3" size={26} />
+              <h4 className="font-semibold text-sky-700 mb-2">Hostel Management System – Outpass Automation</h4>
+              <p className="text-sm text-gray-600">
+                Next.js, Prisma, PostgreSQL – Multi-role workflow with real-time notifications and facial recognition.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 shadow-lg border border-sky-100 hover:shadow-2xl transition-all duration-300">
+              <Cpu className="text-sky-600 mb-3" size={26} />
+              <h4 className="font-semibold text-sky-700 mb-2">Blood Management System</h4>
+              <p className="text-sm text-gray-600">
+                Next.js, PostgreSQL – Live donor search with geo-filtering, role-based security, and 99.5% uptime.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 shadow-lg border border-sky-100 hover:shadow-2xl transition-all duration-300">
+              <Code className="text-sky-600 mb-3" size={26} />
+              <h4 className="font-semibold text-sky-700 mb-2">AI Video Interview Platform</h4>
+              <p className="text-sm text-gray-600">
+                Next.js, Stream API – Real-time video conferencing with scheduling, feedback, and analytics.
+              </p>
+            </div>
+
+            {/* Experience */}
+            <div className="bg-white rounded-lg p-6 shadow-lg border border-sky-100 hover:shadow-2xl transition-all duration-300 col-span-full">
+              <Briefcase className="text-sky-600 mb-3" size={26} />
+              <h4 className="font-semibold text-sky-700 mb-2">Software Developer – College Projects</h4>
+              <p className="text-sm text-gray-600">
+                Built and deployed real-world apps: Outpass Automation, Blood Donor Mgmt, reducing manual effort by 70%.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 shadow-lg border border-sky-100 hover:shadow-2xl transition-all duration-300 col-span-full">
+              <Briefcase className="text-sky-600 mb-3" size={26} />
+              <h4 className="font-semibold text-sky-700 mb-2">Android Developer Intern – AICTE-Google (NEAT)</h4>
+              <p className="text-sm text-gray-600">
+                Developed Android app modules with Java/Kotlin, completed 95% of assigned features within deadlines.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
