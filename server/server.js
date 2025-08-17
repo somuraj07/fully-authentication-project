@@ -1,32 +1,51 @@
+// index.js
 import express from "express";
-import cors from "cors"
-import 'dotenv/config'
+import cors from "cors";
+import "dotenv/config";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
-import authRouter from './routes/authRoute.js'
+import authRouter from "./routes/authRoute.js";
 import userRouter from "./routes/userRoutes.js";
 
-
 const app = express();
-const port = process.env.port || 4000
+
+// ✅ Use correct PORT 
+const port = process.env.PORT || 4000;
+
+// Connect to MongoDB
 connectDB();
-const allowedOrigin = ['http://localhost:5173'];
+
+// ✅ Allow both local and deployed frontend
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://fully-authentication-project.vercel.app"
+];
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-  origin: allowedOrigin,
-  credentials: true
-}));
 
+// ✅ Setup CORS properly
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 
-//end point of api
-app.get("/",(req,res)=>{
-    console.log(req.body);
-    res.send("api is running hello ")
-})
-app.use('/api/auth',authRouter)
-app.use('/api/user',userRouter)
+// ✅ Test route
+app.get("/", (req, res) => {
+  res.send("API is running ✅");
+});
 
+// ✅ API routes
+app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
 
-app.listen(port,()=> console.log("server is started "));
+// Start server
+app.listen(port, () => console.log(` Server running on port ${port}`));
